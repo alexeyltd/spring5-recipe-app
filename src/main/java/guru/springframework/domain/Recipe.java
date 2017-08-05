@@ -11,7 +11,7 @@ public class Recipe {
 	private Long id;
 
 	private String description;
-	private Integer pripTime;
+	private Integer prepTime;
 	private Integer cookTime;
 	private Integer servings;
 	private String source;
@@ -30,6 +30,12 @@ public class Recipe {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Notes notes;
 
+	@ManyToMany
+	@JoinTable(name = "recipe_category",
+			joinColumns = @JoinColumn(name = "recipe_id"),
+			inverseJoinColumns = @JoinColumn(name = "category_id"))
+	private Set<Category> categories;
+
 	public Long getId() {
 		return id;
 	}
@@ -46,12 +52,12 @@ public class Recipe {
 		this.description = description;
 	}
 
-	public Integer getPripTime() {
-		return pripTime;
+	public Integer getPrepTime() {
+		return prepTime;
 	}
 
-	public void setPripTime(final Integer pripTime) {
-		this.pripTime = pripTime;
+	public void setPrepTime(final Integer prepTime) {
+		this.prepTime = prepTime;
 	}
 
 	public Integer getCookTime() {
@@ -124,5 +130,13 @@ public class Recipe {
 
 	public void setDifficulty(final Difficulty difficulty) {
 		this.difficulty = difficulty;
+	}
+
+	public Set<Category> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(final Set<Category> categories) {
+		this.categories = categories;
 	}
 }
