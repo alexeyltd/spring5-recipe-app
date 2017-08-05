@@ -1,8 +1,12 @@
 package guru.springframework.domain;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.Set;
 
+@Data
+@EqualsAndHashCode(exclude = {"recipes"})
 @Entity
 public class Category {
 
@@ -18,27 +22,4 @@ public class Category {
 	public Category() {
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(final Long id) {
-		this.id = id;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(final String description) {
-		this.description = description;
-	}
-
-	public Set<Recipe> getRecipes() {
-		return recipes;
-	}
-
-	public void setRecipes(final Set<Recipe> recipes) {
-		this.recipes = recipes;
-	}
 }
