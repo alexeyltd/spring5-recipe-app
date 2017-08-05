@@ -15,6 +15,9 @@ public class Notes {
 	@OneToOne
 	private Recipe recipe;
 
+	public Notes() {
+	}
+
 	public Long getId() {
 		return id;
 	}
