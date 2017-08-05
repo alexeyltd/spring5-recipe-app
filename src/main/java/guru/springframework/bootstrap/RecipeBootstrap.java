@@ -67,7 +67,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
 		recipe.setNotes(notes);
 
-		recipe.getIngredients().add(new Ingredient("ripe", new BigDecimal(2), teaspoon));
+		recipe.addIngredient(new Ingredient("ripe", new BigDecimal(2), teaspoon));
 
 		recipe.getCategories().add(american.get());
 
