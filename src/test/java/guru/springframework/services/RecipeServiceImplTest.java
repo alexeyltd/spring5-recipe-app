@@ -38,7 +38,6 @@ public class RecipeServiceImplTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-
         recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
@@ -91,6 +90,18 @@ public class RecipeServiceImplTest {
         assertEquals(recipes.size(), 1);
         verify(recipeRepository, times(1)).findAll();
         verify(recipeRepository, never()).findById(anyLong());
+    }
+
+    @Test
+    public void testDeleteRecipe() {
+//      given
+        Long id = new Long(2L);
+
+//      when
+        recipeService.deleteById(id);
+
+//      then
+        verify(recipeRepository, times(1)).deleteById(anyLong());
     }
 
 }
